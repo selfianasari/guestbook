@@ -12,10 +12,9 @@
     <section class="section">
         <div class="card">
             <div class="card-body">
-            <form action="{{ route('admin.institution.update', $institution->name) }}" method="POST" enctype="multipart/form-data">
+            <form action="{{ route('admin.institution.update', $institution->id) }}" method="POST" enctype="multipart/form-data">
             @csrf
             @method('PUT')
-
             <div class="form-group mb-2">
                 <label for="name" class="form-label">Institution Name</label>
                 <input type="text" name="name" id="name" value="{{ $institution->name }}" class="form-control" />
@@ -25,4 +24,6 @@
 
             <a href="{{ route('admin.institution.index') }}" class="btn btn-secondary">Batal</a>
         </form>
+            </div>
+        </div>
 @endsection

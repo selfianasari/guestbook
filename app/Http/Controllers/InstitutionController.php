@@ -66,10 +66,14 @@ class InstitutionController extends Controller
     public function update(Request $request, string $id)
     {
         $request->validate([
-            'name'=> 'required|institution|max:128',
+            'name'=> 'required|max:128',
         ], [
             'name.required' => 'Nama harus diisi.',
         ]);
+
+        $institution = Institution::findOrFail($id);
+        $institution->name = $request->input('name');
+        $institution->save();
         return redirect()->route('admin.institution.index')->with('success', 'Institution berhasil diperbarui.');
 
     }
@@ -79,6 +83,8 @@ class InstitutionController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $institution = Institution::find($id);
+        $institution->delete();
+        return redirect()->route('admin.institution.index');
     }
 }
