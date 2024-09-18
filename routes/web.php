@@ -23,4 +23,6 @@ Route::group([
 
     //Routing CRUD: INstitution
     Route::resource('/institution', App\Http\Controllers\InstitutionController::class);
+
+    Route::resource('/guests', App\Http\Controllers\GuestController::class)->only(['index', 'show', 'destroy']);
 });

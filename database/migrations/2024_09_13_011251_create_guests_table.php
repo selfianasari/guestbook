@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('guests', function (Blueprint $table) {
             $table->id();
-            $table->string('fullname, 128');
+            $table->string('fullname', 128);
             $table->foreignId('institution_id')->references('id')->on('institutions');
             $table->string('from')->nullable();
             $table->string('phonenumber', 16)->nullable();
